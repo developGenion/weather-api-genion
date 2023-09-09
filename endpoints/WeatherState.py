@@ -25,7 +25,7 @@ def get_city():
         return jsonify({'error': 'la ciudad es requerido'}), 400
 
 
-@WeatherState_route.route('/clima', methods=['POST'])
+@WeatherState_route.route('/weather', methods=['POST'])
 def get_Weather_city():
     data = request.get_json()
     lon = data['lon']

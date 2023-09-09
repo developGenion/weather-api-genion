@@ -5,7 +5,7 @@ from logging import getLogger
 _log = getLogger('database')
 
 try:
-    conn = connect('postgres://user_base:password@localhost:5432/bd', cursor_factory=RealDictCursor)
+    conn = connect('postgres://plataformal:*12345genion@localhost:5432/clima', cursor_factory=RealDictCursor)
     _log.info('Conexion iniciada')
 except Exception as err:
     _log.error('Error en la conexion %s', str(err))

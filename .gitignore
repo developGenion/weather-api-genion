@@ -12,6 +12,7 @@ __pycache__/
 # Ignorar los archivos de entorno virtual
 venv/
 *.venv*
+envs/
 
 # Ignorar los archivos de compilación
 *.pyo

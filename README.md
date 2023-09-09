@@ -2,6 +2,71 @@
 
 This documentation provides an overview of the routes and functionalities of the Weather App backend. The backend is built with Flask and is responsible for connecting to the OpenWeatherMap API, processing information, and storing it in a PostgreSQL database.
 
+**Tools Used:**
+- Python (^3.8): [Official Python Website](https://www.python.org/)
+- flask (^2.3): [Official flask Website](https://flask.palletsprojects.com/en/2.3.x/)
+- postgres (^14.9): [postgres Official Website](https://www.postgresql.org/)
+
+
+## Installation and Setup
+
+To run the Weather App backend on your local machine, follow these steps:
+
+1. **Clone the repository:** Open your terminal and run the following command to clone the repository:
+
+   ```bash
+   $ git clone https://github.com/developGenion/weather-api-genion.git
+   ```
+
+
+2. **Navigate to the project directory:** Change your current directory to the project folder:
+
+   ```bash
+   $ cd weather-api-genion
+   ```
+
+3. **Create a virtual environment:** Create a Python virtual environment to isolate project dependencies:
+
+   ```bash
+   $ python3 -m venv venv
+   ```
+
+4. **Activate the virtual environment:** Activate the virtual environment. The activation command varies depending on your operating system:
+
+   - On macOS and Linux:
+
+     ```bash
+     $ source venv/bin/activate
+     ```
+
+   - On Windows:
+
+     ```bash
+     $ venv\Scripts\activate
+     ```
+
+5. **Install dependencies:** Install the required Python packages from the `requirements.txt` file:
+
+   ```bash
+   $ pip install -r requirements.txt
+   ```
+
+6. **Run Flask:** Start the Flask application:
+
+   ```bash
+   $ flask run
+   ```
+
+## Configuration
+
+Ensure that you configure the PostgreSQL database connection correctly and provide the OpenWeatherMap API key in the `app.py` file before running the backend.
+
+To configure the database, modify the parameters in the `Controllers/__init__.py` file (`user_base`, `password`, `clima`) to match your specific database settings.
+
+   ```__init__
+      postgres://user_base:password@localhost:5432/bd
+   ```
+
 ## Routes and Functionalities
 
 ### Get Information About a City
@@ -19,7 +84,7 @@ This documentation provides an overview of the routes and functionalities of the
 
 ### Get Weather Forecast for a Specific Location
 
-#### Route: `/clima` (POST)
+#### Route: `/weather` (POST)
 
 - **Description:** This route allows you to obtain the weather forecast for a specific location by providing the longitude and latitude coordinates.
 
@@ -92,11 +157,7 @@ This documentation provides an overview of the routes and functionalities of the
   - 200 OK: The user's weather query history is returned.
   - 404 Not Found: If the user's history is not found.
 
-## Configuration
 
-Ensure that you configure the PostgreSQL database connection correctly and provide the OpenWeatherMap API key in the `main.py` file before running the backend.
-
-To configure the database, modify the parameters in the `Controllers/__init__.py` file (`user_base`, `password`, `clima`) to match your specific database settings.
 
 ## Contact
 
