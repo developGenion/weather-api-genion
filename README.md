@@ -57,6 +57,43 @@ To run the Weather App backend on your local machine, follow these steps:
    $ flask run
    ```
 
+
+## Troubleshooting Installation Issues
+
+### Error: Missing Prerequisites for psycopg2 Installation
+
+If you encounter an error message indicating that you're missing prerequisites required to build the psycopg2 package from source, such as the `x86_64-linux-gnu-gcc` compiler, follow these steps to resolve the issue:
+
+#### 1. Install `psycopg2-binary` Package
+
+The recommended approach is to use the `psycopg2-binary` package, which is a pre-built binary package that doesn't require compilation. You can install it using `pip`:
+
+```bash
+pip3 install psycopg2-binary
+```
+
+#### 2. Install `libpq-dev` Package
+
+You may also need to install the `libpq-dev` package to satisfy PostgreSQL development library dependencies:
+
+On a Debian-based system (e.g., Ubuntu), you can install the necessary build tools and libraries with the following command:
+
+```bash
+sudo apt-get install python3-dev libpq-dev build-essential
+```
+
+On a Red Hat-based system (e.g., CentOS), you can use:
+
+```bash
+sudo yum install python3-devel postgresql-devel gcc
+```
+
+These commands will ensure that you have the required libraries and tools to build and install psycopg2 successfully.
+
+By following these steps, you should be able to resolve any missing prerequisites or compilation errors related to psycopg2 installation.
+
+
+
 ## Configuration
 
 Ensure that you configure the PostgreSQL database connection correctly and provide the OpenWeatherMap API key in the `app.py` file before running the backend.
