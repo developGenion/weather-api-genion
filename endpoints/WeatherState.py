@@ -5,11 +5,12 @@ from controllers.MyCity import MyCitys
 from controllers.Users import User
 from controllers.QueryHistory import QueryHistoryWeather
 
-# Create an instance of Blueprint
+# Create an instance of Blueprint for defining routes
 WeatherState_route = Blueprint('WeatherState', __name__)
+# Define the API key (can be a real key in production)
 api_key = '439d4b804bc8187953eb36d2a8c26a02'
 
-# Define the routes
+# Define the routes for weather-related data
 @WeatherState_route.route('/city', methods=['GET'])
 def get_city():
     if 'city' in request.args:
@@ -39,7 +40,7 @@ def get_Weather_city():
         return jsonify({'error': 'the city does not exist'}), 400
     
 
-
+# Routes for managing user's favorite cities and sessions
 @WeatherState_route.route('/my_favorite', methods=['POST'])
 def save_MyCity():
     data = request.get_json()
@@ -102,7 +103,7 @@ def User_session():
             }), 200
 
 
-
+# Routes for saving and listing weather query history
 @WeatherState_route.route('/history', methods=['POST'])
 def Save_History():
     data = request.get_json()

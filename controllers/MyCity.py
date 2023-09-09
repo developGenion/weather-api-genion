@@ -6,6 +6,7 @@ class MyCitys:
     @staticmethod
     def create(city, lon, lat):
         with get_cursor(conn) as cur:
+            # Check if a city with the same lon and lat already exists
             cur.execute('''
                 SELECT
                     id
@@ -16,6 +17,8 @@ class MyCitys:
             existing_city = cur.fetchone()
             if existing_city:
                 return True, existing_city['id']
+            
+            # If the city does not exist, insert it into the database
             try:
                 cur.execute('''
                     INSERT INTO my_city( 
@@ -38,7 +41,8 @@ class MyCitys:
             except psycopg2.errors.UniqueViolation:
                 conn.rollback()
                 return False, 'Error creating city'
-            
+    
+    # Method to manage the relationship between users and cities
     @staticmethod
     def RelationUseCity(users_id, my_city_id):
         with get_cursor(conn) as cur:
@@ -50,6 +54,7 @@ class MyCitys:
             ''',{'users_id': users_id})
             existing_relation = cur.fetchone()
             if existing_relation:
+                # Update the existing relationship
                 try:
                     cur.execute('''
                         UPDATE user_city
@@ -63,6 +68,7 @@ class MyCitys:
                     conn.rollback()
                     return False, 'Error updating relationship'
             else:
+                # Create a new relationship if it doesn't exist
                 try:
                     cur.execute('''
                         INSERT INTO user_city(
@@ -84,7 +90,7 @@ class MyCitys:
                     conn.rollback()
                     return False, f'Error creating relationship: {str(e)}'
                 
-                
+    # Method to retrieve user's favorite cities
     @staticmethod
     def ShowMyUserCity(users_id):
         with get_cursor(conn) as curd:

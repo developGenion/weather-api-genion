@@ -98,7 +98,7 @@ By following these steps, you should be able to resolve any missing prerequisite
 
 Ensure that you configure the PostgreSQL database connection correctly and provide the OpenWeatherMap API key in the `app.py` file before running the backend.
 
-To configure the database, modify the parameters in the `Controllers/__init__.py` file (`user_base`, `password`, `clima`) to match your specific database settings.
+To configure the database, modify the parameters in the `Controllers/__init__.py` file (`user_base`, `password`, `bd`) to match your specific database settings.
 
    ```__init__
       postgres://user_base:password@localhost:5432/bd
