@@ -20,9 +20,9 @@ def get_city():
             info = response.json()
             return jsonify(info), 200
         else:
-            return jsonify({'error': 'error'}), 400
+            return jsonify({'error': 'the city does not exist'}), 400
     else:
-        return jsonify({'error': 'la ciudad es requerido'}), 400
+        return jsonify({'error': 'city is requerid'}), 400
 
 
 @WeatherState_route.route('/weather', methods=['POST'])
@@ -36,7 +36,7 @@ def get_Weather_city():
         info = response.json()
         return jsonify(info), 200
     else:
-        return jsonify({'error': 'la ciudad es requerido'}), 400
+        return jsonify({'error': 'the city does not exist'}), 400
     
 
 
@@ -51,7 +51,7 @@ def save_MyCity():
     session = data['session'] 
     
     if (user := User.get_one(session)) == None:
-        return jsonify({'error': 'No existe'}), 404
+        return jsonify({'error': 'No user exists'}), 404
     else:
         relation, id_relation = MyCitys.RelationUseCity(
             users_id=user['id'],
@@ -65,7 +65,7 @@ def save_MyCity():
             
         return jsonify({
             "id": id_relation,
-            "message": "Ciudad favorita add"
+            "message": "favorite city added"
         }), 200
     
     
@@ -78,7 +78,7 @@ def User_session():
     if not result:
         if not id_user:
             return jsonify({
-                "error": "Error al crear session user"
+                "error": "Error creating session user"
             }), 500
         else:
             return jsonify({
@@ -130,6 +130,6 @@ def list_history():
     session = request.args.get('session')
     ok, result = QueryHistoryWeather.list(str(session))
     if not ok:
-        return jsonify({'error': "error"}), 404
+        return jsonify({'error': "has no history"}), 404
     return jsonify(result), 200
     

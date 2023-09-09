@@ -65,5 +65,5 @@ class QueryHistoryWeather:
                     return True, cur.fetchone()['id']
                 except Exception as e:
                     conn.rollback()
-                    return False, 'Error al crear la ciudad'
+                    return False, 'Error creating city'
            

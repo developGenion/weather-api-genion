@@ -6,9 +6,9 @@ _log = getLogger('database')
 
 try:
     conn = connect('postgres://plataformal:*12345genion@localhost:5432/clima', cursor_factory=RealDictCursor)
-    _log.info('Conexion iniciada')
+    _log.info('Connection started')
 except Exception as err:
-    _log.error('Error en la conexion %s', str(err))
+    _log.error('Connection error %s', str(err))
 
 class get_cursor:
     def __init__(self, conn):

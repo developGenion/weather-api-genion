@@ -37,7 +37,7 @@ class MyCitys:
                 return True, cur.fetchone()['id']
             except psycopg2.errors.UniqueViolation:
                 conn.rollback()
-                return False, 'Error al crear la ciudad'
+                return False, 'Error creating city'
             
     @staticmethod
     def RelationUseCity(users_id, my_city_id):
@@ -58,10 +58,10 @@ class MyCitys:
                             WHERE id = %(id)s;
                     ''', {'users_id': users_id, 'my_city_id': my_city_id, 'id': existing_relation['id']})
                     conn.commit()
-                    return True, 'Relación actualizada'
+                    return True, 'Updated relationship'
                 except Exception:
                     conn.rollback()
-                    return False, 'Error al actualizar la relación'
+                    return False, 'Error updating relationship'
             else:
                 try:
                     cur.execute('''
@@ -82,7 +82,7 @@ class MyCitys:
                     return True, cur.fetchone()['id']
                 except Exception as e:
                     conn.rollback()
-                    return False, f'Error al crear la relación: {str(e)}'
+                    return False, f'Error creating relationship: {str(e)}'
                 
                 
     @staticmethod

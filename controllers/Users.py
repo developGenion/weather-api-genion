@@ -28,7 +28,7 @@ class User:
                 return True, curd.fetchone()['id']
             except psycopg2.errors.UniqueViolation:
                 conn.rollback()
-                return False, 'Error al crear la session'
+                return False, 'Error creating session'
     
     @staticmethod
     def get_one(session_id):
