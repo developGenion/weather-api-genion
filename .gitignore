@@ -1,0 +1,26 @@
+# Ignorar los archivos de Byte-compiled
+__pycache__/
+*.pyc
+
+# Ignorar los archivos de registro
+*.log
+
+# Ignorar los archivos generados por el editor de texto
+.idea/
+.vscode/
+
+# Ignorar los archivos de entorno virtual
+venv/
+*.venv*
+
+# Ignorar los archivos de compilación
+*.pyo
+*.pyd
+*.pyz
+
+# Ignorar los archivos generados por el sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivo de contraseñas
+secrets.json
