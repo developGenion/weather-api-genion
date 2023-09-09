@@ -45,10 +45,10 @@ To run the Weather App backend on your local machine, follow these steps:
      $ venv\Scripts\activate
      ```
 
-5. **Install dependencies:** Install the required Python packages from the `requirements.txt` file:
+5. **Install dependencies:** Install the required Python packages from the `requeriments.txt` file:
 
    ```bash
-   $ pip install -r requirements.txt
+   $ pip install -r requeriments.txt
    ```
 
 6. **Run Flask:** Start the Flask application:
